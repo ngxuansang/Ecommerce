@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ECOMMERCEModelStoreContainer" CdmEntityContainer="EcommerceEntities">
+    <EntitySetMapping Name="BRANDs">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.BRAND">
+        <MappingFragment StoreEntitySet="BRAND">
+          <ScalarProperty Name="BRAND_ID" ColumnName="BRAND_ID" />
+          <ScalarProperty Name="BRAND_NAME" ColumnName="BRAND_NAME" />
+          <ScalarProperty Name="BRAND_NAME_UNSIGNED" ColumnName="BRAND_NAME_UNSIGNED" />
+          <ScalarProperty Name="BRAND_LOGO" ColumnName="BRAND_LOGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BUY_BENEFIT">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.BUY_BENEFIT">
+        <MappingFragment StoreEntitySet="BUY_BENEFIT">
+          <ScalarProperty Name="BENEFIT_ID" ColumnName="BENEFIT_ID" />
+          <ScalarProperty Name="BENEFIT_TITLE" ColumnName="BENEFIT_TITLE" />
+          <ScalarProperty Name="BENEFIT_CONTENT" ColumnName="BENEFIT_CONTENT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORIEs">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.CATEGORIE">
+        <MappingFragment StoreEntitySet="CATEGORIE">
+          <ScalarProperty Name="CATEGORIE_LOGO" ColumnName="CATEGORIE_LOGO" />
+          <ScalarProperty Name="CATEGORIE_ID" ColumnName="CATEGORIE_ID" />
+          <ScalarProperty Name="CATEGORIE_NAME" ColumnName="CATEGORIE_NAME" />
+          <ScalarProperty Name="CATEGORIE_NAME_UNSIGNED" ColumnName="CATEGORIE_NAME_UNSIGNED" />
+          <ScalarProperty Name="CATEGORIE_CODE" ColumnName="CATEGORIE_CODE" />
+          <ScalarProperty Name="CATEGORIE_TYPE" ColumnName="CATEGORIE_TYPE" />
+          <ScalarProperty Name="CATEGORIE_ROOT" ColumnName="CATEGORIE_ROOT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CUSTOMERs">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.CUSTOMER">
+        <MappingFragment StoreEntitySet="CUSTOMER">
+          <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+          <ScalarProperty Name="CUSTOMER_FIRST_NAME" ColumnName="CUSTOMER_FIRST_NAME" />
+          <ScalarProperty Name="CUSTOMER_LAST_NAME" ColumnName="CUSTOMER_LAST_NAME" />
+          <ScalarProperty Name="CUSTOMER_EMAIL" ColumnName="CUSTOMER_EMAIL" />
+          <ScalarProperty Name="CUSTOMER_CONTACT_NUMBER" ColumnName="CUSTOMER_CONTACT_NUMBER" />
+          <ScalarProperty Name="CUSTOMER_ADDRESS" ColumnName="CUSTOMER_ADDRESS" />
+          <ScalarProperty Name="CUSTOMER_PASSWORD" ColumnName="CUSTOMER_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMAGE_STORE">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.IMAGE_STORE">
+        <MappingFragment StoreEntitySet="IMAGE_STORE">
+          <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+          <ScalarProperty Name="IMAGE_SOURCE" ColumnName="IMAGE_SOURCE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NEWSLETTERs">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.NEWSLETTER">
+        <MappingFragment StoreEntitySet="NEWSLETTER">
+          <ScalarProperty Name="NEWSLETTER_ID" ColumnName="NEWSLETTER_ID" />
+          <ScalarProperty Name="NEWSLETTER_EMAIL_USER" ColumnName="NEWSLETTER_EMAIL_USER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDER_TBL">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.ORDER_TBL">
+        <MappingFragment StoreEntitySet="ORDER_TBL">
+          <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+          <ScalarProperty Name="ORDER_DATE" ColumnName="ORDER_DATE" />
+          <ScalarProperty Name="CUSTOMER_ORDER" ColumnName="CUSTOMER_ORDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAY_METHOD">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.PAY_METHOD">
+        <MappingFragment StoreEntitySet="PAY_METHOD">
+          <ScalarProperty Name="PAY_METHOD_ID" ColumnName="PAY_METHOD_ID" />
+          <ScalarProperty Name="PAY_METHOD_TITLE" ColumnName="PAY_METHOD_TITLE" />
+          <ScalarProperty Name="PAY_METHOD_TITLE_UNSIGNED" ColumnName="PAY_METHOD_TITLE_UNSIGNED" />
+          <ScalarProperty Name="PAY_METHOD_CODE" ColumnName="PAY_METHOD_CODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCT_DETAIL">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.PRODUCT_DETAIL">
+        <MappingFragment StoreEntitySet="PRODUCT_DETAIL">
+          <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+          <ScalarProperty Name="PRODUCT_TITLE" ColumnName="PRODUCT_TITLE" />
+          <ScalarProperty Name="PRODUCT_TITLE_UNSIGNED" ColumnName="PRODUCT_TITLE_UNSIGNED" />
+          <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+          <ScalarProperty Name="PRODUCT_PRICE" ColumnName="PRODUCT_PRICE" />
+          <ScalarProperty Name="PRODUCT_SPECIAL_PRICE" ColumnName="PRODUCT_SPECIAL_PRICE" />
+          <ScalarProperty Name="PRODUCT_DESCIPTION" ColumnName="PRODUCT_DESCIPTION" />
+          <ScalarProperty Name="PRODUCT_INFOMATION" ColumnName="PRODUCT_INFOMATION" />
+          <ScalarProperty Name="PRODUCT_AVAILABILITY" ColumnName="PRODUCT_AVAILABILITY" />
+          <ScalarProperty Name="PRODUCT_CONDITION" ColumnName="PRODUCT_CONDITION" />
+          <ScalarProperty Name="PRODUCT_SKU" ColumnName="PRODUCT_SKU" />
+          <ScalarProperty Name="PRODUCT_BARCODE" ColumnName="PRODUCT_BARCODE" />
+          <ScalarProperty Name="PRODUCT_QUANTITY" ColumnName="PRODUCT_QUANTITY" />
+          <ScalarProperty Name="PRODUCT_ADD_DATE" ColumnName="PRODUCT_ADD_DATE" />
+          <ScalarProperty Name="BRAND_PRODUCT_ID" ColumnName="BRAND_PRODUCT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALE_PROMOTION_EVENT">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.SALE_PROMOTION_EVENT">
+        <MappingFragment StoreEntitySet="SALE_PROMOTION_EVENT">
+          <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+          <ScalarProperty Name="EVENT_TITLE" ColumnName="EVENT_TITLE" />
+          <ScalarProperty Name="EVENT_TITLE_UNSIGNED" ColumnName="EVENT_TITLE_UNSIGNED" />
+          <ScalarProperty Name="EVENT_CODE" ColumnName="EVENT_CODE" />
+          <ScalarProperty Name="EVENT_BEGIN_TIME" ColumnName="EVENT_BEGIN_TIME" />
+          <ScalarProperty Name="EVENT_END_TIME" ColumnName="EVENT_END_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIZE_TYPE">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.SIZE_TYPE">
+        <MappingFragment StoreEntitySet="SIZE_TYPE">
+          <ScalarProperty Name="SIZE_TYPE_ID" ColumnName="SIZE_TYPE_ID" />
+          <ScalarProperty Name="SIZE_TYPE_TITLE" ColumnName="SIZE_TYPE_TITLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ECOMMERCEModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ORDER_ITEM" TypeName="ECOMMERCEModel.ORDER_ITEM" StoreEntitySet="ORDER_ITEM">
+      <EndProperty Name="ORDER_TBL">
+        <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+      </EndProperty>
+      <EndProperty Name="PRODUCT_DETAIL">
+        <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PRODUCT_CATEGORIE" TypeName="ECOMMERCEModel.PRODUCT_CATEGORIE" StoreEntitySet="PRODUCT_CATEGORIE">
+      <EndProperty Name="CATEGORIE">
+        <ScalarProperty Name="CATEGORIE_ID" ColumnName="CATEGORIE_ID" />
+      </EndProperty>
+      <EndProperty Name="PRODUCT_DETAIL">
+        <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PRODUCT_PAY_METHOD" TypeName="ECOMMERCEModel.PRODUCT_PAY_METHOD" StoreEntitySet="PRODUCT_PAY_METHOD">
+      <EndProperty Name="PAY_METHOD">
+        <ScalarProperty Name="PAY_METHOD_ID" ColumnName="PAY_METHOD_ID" />
+      </EndProperty>
+      <EndProperty Name="PRODUCT_DETAIL">
+        <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PRODUCT_PROMOTION_EVENT" TypeName="ECOMMERCEModel.PRODUCT_PROMOTION_EVENT" StoreEntitySet="PRODUCT_PROMOTION_EVENT">
+      <EndProperty Name="PRODUCT_DETAIL">
+        <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+      </EndProperty>
+      <EndProperty Name="SALE_PROMOTION_EVENT">
+        <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PRODUCT_SIZE" TypeName="ECOMMERCEModel.PRODUCT_SIZE" StoreEntitySet="PRODUCT_SIZE">
+      <EndProperty Name="PRODUCT_DETAIL">
+        <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+      </EndProperty>
+      <EndProperty Name="SIZE_TYPE">
+        <ScalarProperty Name="SIZE_TYPE_ID" ColumnName="SIZE_TYPE_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="WISHLIST" TypeName="ECOMMERCEModel.WISHLIST" StoreEntitySet="WISHLIST">
+      <EndProperty Name="CUSTOMER">
+        <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+      </EndProperty>
+      <EndProperty Name="PRODUCT_DETAIL">
+        <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

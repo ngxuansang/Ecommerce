@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    @RenderSection("Style", false)
+
+    <title>Kute shop - themelot.net</title>
+</head>
+<body class="home">
+    @using Website.Ecommerce.User.Project.Ecommerce.Models;
+    
+    <!-- TOP BANNER -->
+    @*<div id="top-banner" class="top-banner">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <h1>Special Offer!</h1>
+            <h2>Additional 40% OFF For Men & Women Clothings</h2>
+            <span>This offer is for online only 7PM to middnight ends in 30th July 2015</span>
+            <span class="btn-close"></span>
+        </div>
+    </div>*@
+    @Html.Partial("_Header", new HeaderModel())
+
+    @RenderBody()
+
+    @Html.Partial("_Footer")
+    <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
+    <!-- Script-->
+    @RenderSection("Javascript", false)
+
+</body>
+</html>

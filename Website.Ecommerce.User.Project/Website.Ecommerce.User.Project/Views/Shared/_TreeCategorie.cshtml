@@ -1,0 +1,17 @@
+﻿@model CategorieDetail
+
+
+@foreach (var item in Model.CategorieCurrent.CATEGORIE1)
+{
+    <li class="">
+        <span></span><a href="@Url.Action("GetCategorie", "CategorieDetail", new { id = item.CATEGORIE_ID })">@item.CATEGORIE_NAME</a>
+        @*<ul style="display: none;">
+            @foreach (var child in item.CATEGORIE1)
+            {
+                <li><span></span><a href="#">@child.CATEGORIE_NAME</a></li>
+            }
+        </ul>*@
+   
+    </li>
+}
+

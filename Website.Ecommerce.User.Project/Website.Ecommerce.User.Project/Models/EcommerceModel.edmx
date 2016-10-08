@@ -1,0 +1,931 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ECOMMERCEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BRAND">
+          <Key>
+            <PropertyRef Name="BRAND_ID" />
+          </Key>
+          <Property Name="BRAND_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BRAND_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BRAND_NAME_UNSIGNED" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BRAND_LOGO" Type="bigint" />
+        </EntityType>
+        <EntityType Name="BUY_BENEFIT">
+          <Key>
+            <PropertyRef Name="BENEFIT_ID" />
+          </Key>
+          <Property Name="BENEFIT_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BENEFIT_TITLE" Type="nvarchar" MaxLength="150" />
+          <Property Name="BENEFIT_CONTENT" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CATEGORIE">
+          <Key>
+            <PropertyRef Name="CATEGORIE_ID" />
+          </Key>
+          <Property Name="CATEGORIE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CATEGORIE_NAME" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CATEGORIE_NAME_UNSIGNED" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CATEGORIE_CODE" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CATEGORIE_TYPE" Type="bigint" Nullable="false" />
+          <Property Name="CATEGORIE_ROOT" Type="bigint" />
+          <Property Name="CATEGORIE_LOGO" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CUSTOMER_FIRST_NAME" Type="nvarchar" MaxLength="100" />
+          <Property Name="CUSTOMER_LAST_NAME" Type="nvarchar" MaxLength="120" />
+          <Property Name="CUSTOMER_EMAIL" Type="varchar" MaxLength="320" />
+          <Property Name="CUSTOMER_CONTACT_NUMBER" Type="bigint" />
+          <Property Name="CUSTOMER_ADDRESS" Type="nvarchar(max)" />
+          <Property Name="CUSTOMER_PASSWORD" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="IMAGE_STORE">
+          <Key>
+            <PropertyRef Name="IMAGE_ID" />
+          </Key>
+          <Property Name="IMAGE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IMAGE_SOURCE" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NEWSLETTER">
+          <Key>
+            <PropertyRef Name="NEWSLETTER_ID" />
+          </Key>
+          <Property Name="NEWSLETTER_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NEWSLETTER_EMAIL_USER" Type="nvarchar" MaxLength="320" />
+        </EntityType>
+        <EntityType Name="ORDER_ITEM">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="bigint" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER_TBL">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ORDER_DATE" Type="datetime" />
+          <Property Name="CUSTOMER_ORDER" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PAY_METHOD">
+          <Key>
+            <PropertyRef Name="PAY_METHOD_ID" />
+          </Key>
+          <Property Name="PAY_METHOD_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PAY_METHOD_TITLE" Type="nvarchar" MaxLength="100" />
+          <Property Name="PAY_METHOD_TITLE_UNSIGNED" Type="varchar" MaxLength="100" />
+          <Property Name="PAY_METHOD_CODE" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PRODUCT_CATEGORIE">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="CATEGORIE_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
+          <Property Name="CATEGORIE_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT_DETAIL">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRODUCT_TITLE" Type="nvarchar(max)" />
+          <Property Name="PRODUCT_TITLE_UNSIGNED" Type="varchar(max)" />
+          <Property Name="PRODUCT_CODE" Type="varchar" MaxLength="100" />
+          <Property Name="PRODUCT_PRICE" Type="bigint" />
+          <Property Name="PRODUCT_SPECIAL_PRICE" Type="bigint" />
+          <Property Name="PRODUCT_DESCIPTION" Type="nvarchar(max)" />
+          <Property Name="PRODUCT_INFOMATION" Type="nvarchar(max)" />
+          <Property Name="PRODUCT_AVAILABILITY" Type="bit" />
+          <Property Name="PRODUCT_CONDITION" Type="int" />
+          <Property Name="PRODUCT_SKU" Type="varchar" MaxLength="1" />
+          <Property Name="PRODUCT_BARCODE" Type="bigint" />
+          <Property Name="PRODUCT_QUANTITY" Type="bigint" />
+          <Property Name="PRODUCT_ADD_DATE" Type="datetime" />
+          <Property Name="BRAND_PRODUCT_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="PRODUCT_PAY_METHOD">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="PAY_METHOD_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
+          <Property Name="PAY_METHOD_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT_PROMOTION_EVENT">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
+          <Property Name="EVENT_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PRODUCT_SIZE">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="SIZE_TYPE_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
+          <Property Name="SIZE_TYPE_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SALE_PROMOTION_EVENT">
+          <Key>
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="EVENT_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EVENT_TITLE" Type="nvarchar" MaxLength="200" />
+          <Property Name="EVENT_TITLE_UNSIGNED" Type="varchar" MaxLength="200" />
+          <Property Name="EVENT_CODE" Type="varchar" MaxLength="100" />
+          <Property Name="EVENT_BEGIN_TIME" Type="datetime" />
+          <Property Name="EVENT_END_TIME" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SIZE_TYPE">
+          <Key>
+            <PropertyRef Name="SIZE_TYPE_ID" />
+          </Key>
+          <Property Name="SIZE_TYPE_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIZE_TYPE_TITLE" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WISHLIST">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="bigint" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BRAND_IMAGE">
+          <End Role="IMAGE_STORE" Type="Self.IMAGE_STORE" Multiplicity="0..1" />
+          <End Role="BRAND" Type="Self.BRAND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_STORE">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="BRAND">
+              <PropertyRef Name="BRAND_LOGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BRAND_PRODUCT">
+          <End Role="BRAND" Type="Self.BRAND" Multiplicity="0..1" />
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRAND">
+              <PropertyRef Name="BRAND_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_DETAIL">
+              <PropertyRef Name="BRAND_PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORIE_ROOT">
+          <End Role="CATEGORIE" Type="Self.CATEGORIE" Multiplicity="0..1" />
+          <End Role="CATEGORIE1" Type="Self.CATEGORIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIE">
+              <PropertyRef Name="CATEGORIE_ID" />
+            </Principal>
+            <Dependent Role="CATEGORIE1">
+              <PropertyRef Name="CATEGORIE_ROOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_ITEM_ORDER_TBL">
+          <End Role="ORDER_TBL" Type="Self.ORDER_TBL" Multiplicity="1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER_TBL">
+              <PropertyRef Name="ORDER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="ORDER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_ITEM_PRODUCT_DETAIL">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="1" />
+          <End Role="ORDER_ITEM" Type="Self.ORDER_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_DETAIL">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="ORDER_ITEM">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_TBL_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ORDER_TBL" Type="Self.ORDER_TBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_TBL">
+              <PropertyRef Name="CUSTOMER_ORDER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_CATEGORIE_CATEGORIE">
+          <End Role="CATEGORIE" Type="Self.CATEGORIE" Multiplicity="1" />
+          <End Role="PRODUCT_CATEGORIE" Type="Self.PRODUCT_CATEGORIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIE">
+              <PropertyRef Name="CATEGORIE_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_CATEGORIE">
+              <PropertyRef Name="CATEGORIE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_CATEGORIE_PRODUCT_DETAIL">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="1" />
+          <End Role="PRODUCT_CATEGORIE" Type="Self.PRODUCT_CATEGORIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_DETAIL">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_CATEGORIE">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_PAY_METHOD_PAY_METHD">
+          <End Role="PAY_METHOD" Type="Self.PAY_METHOD" Multiplicity="1" />
+          <End Role="PRODUCT_PAY_METHOD" Type="Self.PRODUCT_PAY_METHOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAY_METHOD">
+              <PropertyRef Name="PAY_METHOD_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_PAY_METHOD">
+              <PropertyRef Name="PAY_METHOD_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_PAY_METHOD_PRODUCT_DETAIL">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="1" />
+          <End Role="PRODUCT_PAY_METHOD" Type="Self.PRODUCT_PAY_METHOD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_DETAIL">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_PAY_METHOD">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_PROMOTION_EVENT_PRODUCT_DETAIL">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="1" />
+          <End Role="PRODUCT_PROMOTION_EVENT" Type="Self.PRODUCT_PROMOTION_EVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_DETAIL">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_PROMOTION_EVENT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_PROMOTION_EVENT_SALE_PROMOTION_EVENT">
+          <End Role="SALE_PROMOTION_EVENT" Type="Self.SALE_PROMOTION_EVENT" Multiplicity="1" />
+          <End Role="PRODUCT_PROMOTION_EVENT" Type="Self.PRODUCT_PROMOTION_EVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SALE_PROMOTION_EVENT">
+              <PropertyRef Name="EVENT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_PROMOTION_EVENT">
+              <PropertyRef Name="EVENT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_SIZE_PRODUCT_DETAIL">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="1" />
+          <End Role="PRODUCT_SIZE" Type="Self.PRODUCT_SIZE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_DETAIL">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_SIZE">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCT_SIZE_SIZE_TYPE">
+          <End Role="SIZE_TYPE" Type="Self.SIZE_TYPE" Multiplicity="1" />
+          <End Role="PRODUCT_SIZE" Type="Self.PRODUCT_SIZE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIZE_TYPE">
+              <PropertyRef Name="SIZE_TYPE_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_SIZE">
+              <PropertyRef Name="SIZE_TYPE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WISHLIST_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="WISHLIST" Type="Self.WISHLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="WISHLIST">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WISHLIST_PRODUCT_DETAIL">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="1" />
+          <End Role="WISHLIST" Type="Self.WISHLIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_DETAIL">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="WISHLIST">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ECOMMERCEModelStoreContainer">
+          <EntitySet Name="BRAND" EntityType="Self.BRAND" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BUY_BENEFIT" EntityType="Self.BUY_BENEFIT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATEGORIE" EntityType="Self.CATEGORIE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGE_STORE" EntityType="Self.IMAGE_STORE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NEWSLETTER" EntityType="Self.NEWSLETTER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_ITEM" EntityType="Self.ORDER_ITEM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_TBL" EntityType="Self.ORDER_TBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAY_METHOD" EntityType="Self.PAY_METHOD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT_CATEGORIE" EntityType="Self.PRODUCT_CATEGORIE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT_DETAIL" EntityType="Self.PRODUCT_DETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT_PAY_METHOD" EntityType="Self.PRODUCT_PAY_METHOD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT_PROMOTION_EVENT" EntityType="Self.PRODUCT_PROMOTION_EVENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT_SIZE" EntityType="Self.PRODUCT_SIZE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SALE_PROMOTION_EVENT" EntityType="Self.SALE_PROMOTION_EVENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIZE_TYPE" EntityType="Self.SIZE_TYPE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WISHLIST" EntityType="Self.WISHLIST" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BRAND_IMAGE" Association="Self.FK_BRAND_IMAGE">
+            <End Role="IMAGE_STORE" EntitySet="IMAGE_STORE" />
+            <End Role="BRAND" EntitySet="BRAND" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BRAND_PRODUCT" Association="Self.FK_BRAND_PRODUCT">
+            <End Role="BRAND" EntitySet="BRAND" />
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORIE_ROOT" Association="Self.FK_CATEGORIE_ROOT">
+            <End Role="CATEGORIE" EntitySet="CATEGORIE" />
+            <End Role="CATEGORIE1" EntitySet="CATEGORIE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_ITEM_ORDER_TBL" Association="Self.FK_ORDER_ITEM_ORDER_TBL">
+            <End Role="ORDER_TBL" EntitySet="ORDER_TBL" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_ITEM_PRODUCT_DETAIL" Association="Self.FK_ORDER_ITEM_PRODUCT_DETAIL">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="ORDER_ITEM" EntitySet="ORDER_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_TBL_CUSTOMER" Association="Self.FK_ORDER_TBL_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="ORDER_TBL" EntitySet="ORDER_TBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_CATEGORIE_CATEGORIE" Association="Self.FK_PRODUCT_CATEGORIE_CATEGORIE">
+            <End Role="CATEGORIE" EntitySet="CATEGORIE" />
+            <End Role="PRODUCT_CATEGORIE" EntitySet="PRODUCT_CATEGORIE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_CATEGORIE_PRODUCT_DETAIL" Association="Self.FK_PRODUCT_CATEGORIE_PRODUCT_DETAIL">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="PRODUCT_CATEGORIE" EntitySet="PRODUCT_CATEGORIE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_PAY_METHOD_PAY_METHD" Association="Self.FK_PRODUCT_PAY_METHOD_PAY_METHD">
+            <End Role="PAY_METHOD" EntitySet="PAY_METHOD" />
+            <End Role="PRODUCT_PAY_METHOD" EntitySet="PRODUCT_PAY_METHOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_PAY_METHOD_PRODUCT_DETAIL" Association="Self.FK_PRODUCT_PAY_METHOD_PRODUCT_DETAIL">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="PRODUCT_PAY_METHOD" EntitySet="PRODUCT_PAY_METHOD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_PROMOTION_EVENT_PRODUCT_DETAIL" Association="Self.FK_PRODUCT_PROMOTION_EVENT_PRODUCT_DETAIL">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="PRODUCT_PROMOTION_EVENT" EntitySet="PRODUCT_PROMOTION_EVENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_PROMOTION_EVENT_SALE_PROMOTION_EVENT" Association="Self.FK_PRODUCT_PROMOTION_EVENT_SALE_PROMOTION_EVENT">
+            <End Role="SALE_PROMOTION_EVENT" EntitySet="SALE_PROMOTION_EVENT" />
+            <End Role="PRODUCT_PROMOTION_EVENT" EntitySet="PRODUCT_PROMOTION_EVENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_SIZE_PRODUCT_DETAIL" Association="Self.FK_PRODUCT_SIZE_PRODUCT_DETAIL">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="PRODUCT_SIZE" EntitySet="PRODUCT_SIZE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCT_SIZE_SIZE_TYPE" Association="Self.FK_PRODUCT_SIZE_SIZE_TYPE">
+            <End Role="SIZE_TYPE" EntitySet="SIZE_TYPE" />
+            <End Role="PRODUCT_SIZE" EntitySet="PRODUCT_SIZE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WISHLIST_CUSTOMER" Association="Self.FK_WISHLIST_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="WISHLIST" EntitySet="WISHLIST" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WISHLIST_PRODUCT_DETAIL" Association="Self.FK_WISHLIST_PRODUCT_DETAIL">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="WISHLIST" EntitySet="WISHLIST" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ECOMMERCEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BRAND">
+          <Key>
+            <PropertyRef Name="BRAND_ID" />
+          </Key>
+          <Property Name="BRAND_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BRAND_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BRAND_NAME_UNSIGNED" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BRAND_LOGO" Type="Int64" />
+          <NavigationProperty Name="IMAGE_STORE" Relationship="Self.FK_BRAND_IMAGE" FromRole="BRAND" ToRole="IMAGE_STORE" />
+          <NavigationProperty Name="PRODUCT_DETAIL" Relationship="Self.FK_BRAND_PRODUCT" FromRole="BRAND" ToRole="PRODUCT_DETAIL" />
+        </EntityType>
+        <EntityType Name="BUY_BENEFIT">
+          <Key>
+            <PropertyRef Name="BENEFIT_ID" />
+          </Key>
+          <Property Name="BENEFIT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BENEFIT_TITLE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BENEFIT_CONTENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CATEGORIE">
+          <Key>
+            <PropertyRef Name="CATEGORIE_ID" />
+          </Key>
+          <Property Name="CATEGORIE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CATEGORIE_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CATEGORIE_NAME_UNSIGNED" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATEGORIE_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CATEGORIE_TYPE" Type="Int64" Nullable="false" />
+          <Property Name="CATEGORIE_ROOT" Type="Int64" />
+          <NavigationProperty Name="CATEGORIE1" Relationship="Self.FK_CATEGORIE_ROOT" FromRole="CATEGORIE" ToRole="CATEGORIE1" />
+          <NavigationProperty Name="CATEGORIE2" Relationship="Self.FK_CATEGORIE_ROOT" FromRole="CATEGORIE1" ToRole="CATEGORIE" />
+          <NavigationProperty Name="PRODUCT_DETAIL" Relationship="Self.PRODUCT_CATEGORIE" FromRole="CATEGORIE" ToRole="PRODUCT_DETAIL" />
+          <Property Name="CATEGORIE_LOGO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CUSTOMER_FIRST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_LAST_NAME" Type="String" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_EMAIL" Type="String" MaxLength="320" FixedLength="false" Unicode="false" />
+          <Property Name="CUSTOMER_CONTACT_NUMBER" Type="Int64" />
+          <Property Name="CUSTOMER_ADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_PASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ORDER_TBL" Relationship="Self.FK_ORDER_TBL_CUSTOMER" FromRole="CUSTOMER" ToRole="ORDER_TBL" />
+          <NavigationProperty Name="PRODUCT_DETAIL" Relationship="Self.WISHLIST" FromRole="CUSTOMER" ToRole="PRODUCT_DETAIL" />
+        </EntityType>
+        <EntityType Name="IMAGE_STORE">
+          <Key>
+            <PropertyRef Name="IMAGE_ID" />
+          </Key>
+          <Property Name="IMAGE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IMAGE_SOURCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BRANDs" Relationship="Self.FK_BRAND_IMAGE" FromRole="IMAGE_STORE" ToRole="BRAND" />
+        </EntityType>
+        <EntityType Name="NEWSLETTER">
+          <Key>
+            <PropertyRef Name="NEWSLETTER_ID" />
+          </Key>
+          <Property Name="NEWSLETTER_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NEWSLETTER_EMAIL_USER" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ORDER_TBL">
+          <Key>
+            <PropertyRef Name="ORDER_ID" />
+          </Key>
+          <Property Name="ORDER_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ORDER_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CUSTOMER_ORDER" Type="Int64" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_ORDER_TBL_CUSTOMER" FromRole="ORDER_TBL" ToRole="CUSTOMER" />
+          <NavigationProperty Name="PRODUCT_DETAIL" Relationship="Self.ORDER_ITEM" FromRole="ORDER_TBL" ToRole="PRODUCT_DETAIL" />
+        </EntityType>
+        <EntityType Name="PAY_METHOD">
+          <Key>
+            <PropertyRef Name="PAY_METHOD_ID" />
+          </Key>
+          <Property Name="PAY_METHOD_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PAY_METHOD_TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PAY_METHOD_TITLE_UNSIGNED" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PAY_METHOD_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUCT_DETAIL" Relationship="Self.PRODUCT_PAY_METHOD" FromRole="PAY_METHOD" ToRole="PRODUCT_DETAIL" />
+        </EntityType>
+        <EntityType Name="PRODUCT_DETAIL">
+          <Key>
+            <PropertyRef Name="PRODUCT_ID" />
+          </Key>
+          <Property Name="PRODUCT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRODUCT_TITLE" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCT_TITLE_UNSIGNED" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_PRICE" Type="Int64" />
+          <Property Name="PRODUCT_SPECIAL_PRICE" Type="Int64" />
+          <Property Name="PRODUCT_DESCIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCT_INFOMATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PRODUCT_AVAILABILITY" Type="Boolean" />
+          <Property Name="PRODUCT_CONDITION" Type="Int32" />
+          <Property Name="PRODUCT_SKU" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PRODUCT_BARCODE" Type="Int64" />
+          <Property Name="PRODUCT_QUANTITY" Type="Int64" />
+          <Property Name="PRODUCT_ADD_DATE" Type="DateTime" Precision="3" />
+          <Property Name="BRAND_PRODUCT_ID" Type="Int64" />
+          <NavigationProperty Name="BRAND" Relationship="Self.FK_BRAND_PRODUCT" FromRole="PRODUCT_DETAIL" ToRole="BRAND" />
+          <NavigationProperty Name="ORDER_TBL" Relationship="Self.ORDER_ITEM" FromRole="PRODUCT_DETAIL" ToRole="ORDER_TBL" />
+          <NavigationProperty Name="CATEGORIEs" Relationship="Self.PRODUCT_CATEGORIE" FromRole="PRODUCT_DETAIL" ToRole="CATEGORIE" />
+          <NavigationProperty Name="PAY_METHOD" Relationship="Self.PRODUCT_PAY_METHOD" FromRole="PRODUCT_DETAIL" ToRole="PAY_METHOD" />
+          <NavigationProperty Name="SALE_PROMOTION_EVENT" Relationship="Self.PRODUCT_PROMOTION_EVENT" FromRole="PRODUCT_DETAIL" ToRole="SALE_PROMOTION_EVENT" />
+          <NavigationProperty Name="SIZE_TYPE" Relationship="Self.PRODUCT_SIZE" FromRole="PRODUCT_DETAIL" ToRole="SIZE_TYPE" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.WISHLIST" FromRole="PRODUCT_DETAIL" ToRole="CUSTOMER" />
+        </EntityType>
+        <EntityType Name="SALE_PROMOTION_EVENT">
+          <Key>
+            <PropertyRef Name="EVENT_ID" />
+          </Key>
+          <Property Name="EVENT_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EVENT_TITLE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EVENT_TITLE_UNSIGNED" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EVENT_CODE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EVENT_BEGIN_TIME" Type="DateTime" Precision="3" />
+          <Property Name="EVENT_END_TIME" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PRODUCT_DETAIL" Relationship="Self.PRODUCT_PROMOTION_EVENT" FromRole="SALE_PROMOTION_EVENT" ToRole="PRODUCT_DETAIL" />
+        </EntityType>
+        <EntityType Name="SIZE_TYPE">
+          <Key>
+            <PropertyRef Name="SIZE_TYPE_ID" />
+          </Key>
+          <Property Name="SIZE_TYPE_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIZE_TYPE_TITLE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCT_DETAIL" Relationship="Self.PRODUCT_SIZE" FromRole="SIZE_TYPE" ToRole="PRODUCT_DETAIL" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_BRAND_IMAGE">
+          <End Role="IMAGE_STORE" Type="Self.IMAGE_STORE" Multiplicity="0..1" />
+          <End Role="BRAND" Type="Self.BRAND" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMAGE_STORE">
+              <PropertyRef Name="IMAGE_ID" />
+            </Principal>
+            <Dependent Role="BRAND">
+              <PropertyRef Name="BRAND_LOGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BRAND_PRODUCT">
+          <End Role="BRAND" Type="Self.BRAND" Multiplicity="0..1" />
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BRAND">
+              <PropertyRef Name="BRAND_ID" />
+            </Principal>
+            <Dependent Role="PRODUCT_DETAIL">
+              <PropertyRef Name="BRAND_PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CATEGORIE_ROOT">
+          <End Role="CATEGORIE" Type="Self.CATEGORIE" Multiplicity="0..1" />
+          <End Role="CATEGORIE1" Type="Self.CATEGORIE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORIE">
+              <PropertyRef Name="CATEGORIE_ID" />
+            </Principal>
+            <Dependent Role="CATEGORIE1">
+              <PropertyRef Name="CATEGORIE_ROOT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDER_TBL_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="0..1" />
+          <End Role="ORDER_TBL" Type="Self.ORDER_TBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="ORDER_TBL">
+              <PropertyRef Name="CUSTOMER_ORDER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ORDER_ITEM">
+          <End Role="ORDER_TBL" Type="Self.ORDER_TBL" Multiplicity="*" />
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+        </Association>
+        <Association Name="PRODUCT_CATEGORIE">
+          <End Role="CATEGORIE" Type="Self.CATEGORIE" Multiplicity="*" />
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+        </Association>
+        <Association Name="PRODUCT_PAY_METHOD">
+          <End Role="PAY_METHOD" Type="Self.PAY_METHOD" Multiplicity="*" />
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+        </Association>
+        <Association Name="PRODUCT_PROMOTION_EVENT">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+          <End Role="SALE_PROMOTION_EVENT" Type="Self.SALE_PROMOTION_EVENT" Multiplicity="*" />
+        </Association>
+        <Association Name="PRODUCT_SIZE">
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+          <End Role="SIZE_TYPE" Type="Self.SIZE_TYPE" Multiplicity="*" />
+        </Association>
+        <Association Name="WISHLIST">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <End Role="PRODUCT_DETAIL" Type="Self.PRODUCT_DETAIL" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="EcommerceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BRANDs" EntityType="Self.BRAND" />
+          <EntitySet Name="BUY_BENEFIT" EntityType="Self.BUY_BENEFIT" />
+          <EntitySet Name="CATEGORIEs" EntityType="Self.CATEGORIE" />
+          <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="IMAGE_STORE" EntityType="Self.IMAGE_STORE" />
+          <EntitySet Name="NEWSLETTERs" EntityType="Self.NEWSLETTER" />
+          <EntitySet Name="ORDER_TBL" EntityType="Self.ORDER_TBL" />
+          <EntitySet Name="PAY_METHOD" EntityType="Self.PAY_METHOD" />
+          <EntitySet Name="PRODUCT_DETAIL" EntityType="Self.PRODUCT_DETAIL" />
+          <EntitySet Name="SALE_PROMOTION_EVENT" EntityType="Self.SALE_PROMOTION_EVENT" />
+          <EntitySet Name="SIZE_TYPE" EntityType="Self.SIZE_TYPE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_BRAND_IMAGE" Association="Self.FK_BRAND_IMAGE">
+            <End Role="IMAGE_STORE" EntitySet="IMAGE_STORE" />
+            <End Role="BRAND" EntitySet="BRANDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BRAND_PRODUCT" Association="Self.FK_BRAND_PRODUCT">
+            <End Role="BRAND" EntitySet="BRANDs" />
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CATEGORIE_ROOT" Association="Self.FK_CATEGORIE_ROOT">
+            <End Role="CATEGORIE" EntitySet="CATEGORIEs" />
+            <End Role="CATEGORIE1" EntitySet="CATEGORIEs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDER_TBL_CUSTOMER" Association="Self.FK_ORDER_TBL_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="ORDER_TBL" EntitySet="ORDER_TBL" />
+          </AssociationSet>
+          <AssociationSet Name="ORDER_ITEM" Association="Self.ORDER_ITEM">
+            <End Role="ORDER_TBL" EntitySet="ORDER_TBL" />
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCT_CATEGORIE" Association="Self.PRODUCT_CATEGORIE">
+            <End Role="CATEGORIE" EntitySet="CATEGORIEs" />
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCT_PAY_METHOD" Association="Self.PRODUCT_PAY_METHOD">
+            <End Role="PAY_METHOD" EntitySet="PAY_METHOD" />
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCT_PROMOTION_EVENT" Association="Self.PRODUCT_PROMOTION_EVENT">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="SALE_PROMOTION_EVENT" EntitySet="SALE_PROMOTION_EVENT" />
+          </AssociationSet>
+          <AssociationSet Name="PRODUCT_SIZE" Association="Self.PRODUCT_SIZE">
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+            <End Role="SIZE_TYPE" EntitySet="SIZE_TYPE" />
+          </AssociationSet>
+          <AssociationSet Name="WISHLIST" Association="Self.WISHLIST">
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+            <End Role="PRODUCT_DETAIL" EntitySet="PRODUCT_DETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ECOMMERCEModelStoreContainer" CdmEntityContainer="EcommerceEntities">
+          <EntitySetMapping Name="BRANDs">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.BRAND">
+              <MappingFragment StoreEntitySet="BRAND">
+                <ScalarProperty Name="BRAND_ID" ColumnName="BRAND_ID" />
+                <ScalarProperty Name="BRAND_NAME" ColumnName="BRAND_NAME" />
+                <ScalarProperty Name="BRAND_NAME_UNSIGNED" ColumnName="BRAND_NAME_UNSIGNED" />
+                <ScalarProperty Name="BRAND_LOGO" ColumnName="BRAND_LOGO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BUY_BENEFIT">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.BUY_BENEFIT">
+              <MappingFragment StoreEntitySet="BUY_BENEFIT">
+                <ScalarProperty Name="BENEFIT_ID" ColumnName="BENEFIT_ID" />
+                <ScalarProperty Name="BENEFIT_TITLE" ColumnName="BENEFIT_TITLE" />
+                <ScalarProperty Name="BENEFIT_CONTENT" ColumnName="BENEFIT_CONTENT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORIEs">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.CATEGORIE">
+              <MappingFragment StoreEntitySet="CATEGORIE">
+                <ScalarProperty Name="CATEGORIE_LOGO" ColumnName="CATEGORIE_LOGO" />
+                <ScalarProperty Name="CATEGORIE_ID" ColumnName="CATEGORIE_ID" />
+                <ScalarProperty Name="CATEGORIE_NAME" ColumnName="CATEGORIE_NAME" />
+                <ScalarProperty Name="CATEGORIE_NAME_UNSIGNED" ColumnName="CATEGORIE_NAME_UNSIGNED" />
+                <ScalarProperty Name="CATEGORIE_CODE" ColumnName="CATEGORIE_CODE" />
+                <ScalarProperty Name="CATEGORIE_TYPE" ColumnName="CATEGORIE_TYPE" />
+                <ScalarProperty Name="CATEGORIE_ROOT" ColumnName="CATEGORIE_ROOT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMERs">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="CUSTOMER_FIRST_NAME" ColumnName="CUSTOMER_FIRST_NAME" />
+                <ScalarProperty Name="CUSTOMER_LAST_NAME" ColumnName="CUSTOMER_LAST_NAME" />
+                <ScalarProperty Name="CUSTOMER_EMAIL" ColumnName="CUSTOMER_EMAIL" />
+                <ScalarProperty Name="CUSTOMER_CONTACT_NUMBER" ColumnName="CUSTOMER_CONTACT_NUMBER" />
+                <ScalarProperty Name="CUSTOMER_ADDRESS" ColumnName="CUSTOMER_ADDRESS" />
+                <ScalarProperty Name="CUSTOMER_PASSWORD" ColumnName="CUSTOMER_PASSWORD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGE_STORE">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.IMAGE_STORE">
+              <MappingFragment StoreEntitySet="IMAGE_STORE">
+                <ScalarProperty Name="IMAGE_ID" ColumnName="IMAGE_ID" />
+                <ScalarProperty Name="IMAGE_SOURCE" ColumnName="IMAGE_SOURCE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NEWSLETTERs">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.NEWSLETTER">
+              <MappingFragment StoreEntitySet="NEWSLETTER">
+                <ScalarProperty Name="NEWSLETTER_ID" ColumnName="NEWSLETTER_ID" />
+                <ScalarProperty Name="NEWSLETTER_EMAIL_USER" ColumnName="NEWSLETTER_EMAIL_USER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_TBL">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.ORDER_TBL">
+              <MappingFragment StoreEntitySet="ORDER_TBL">
+                <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+                <ScalarProperty Name="ORDER_DATE" ColumnName="ORDER_DATE" />
+                <ScalarProperty Name="CUSTOMER_ORDER" ColumnName="CUSTOMER_ORDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAY_METHOD">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.PAY_METHOD">
+              <MappingFragment StoreEntitySet="PAY_METHOD">
+                <ScalarProperty Name="PAY_METHOD_ID" ColumnName="PAY_METHOD_ID" />
+                <ScalarProperty Name="PAY_METHOD_TITLE" ColumnName="PAY_METHOD_TITLE" />
+                <ScalarProperty Name="PAY_METHOD_TITLE_UNSIGNED" ColumnName="PAY_METHOD_TITLE_UNSIGNED" />
+                <ScalarProperty Name="PAY_METHOD_CODE" ColumnName="PAY_METHOD_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCT_DETAIL">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.PRODUCT_DETAIL">
+              <MappingFragment StoreEntitySet="PRODUCT_DETAIL">
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="PRODUCT_TITLE" ColumnName="PRODUCT_TITLE" />
+                <ScalarProperty Name="PRODUCT_TITLE_UNSIGNED" ColumnName="PRODUCT_TITLE_UNSIGNED" />
+                <ScalarProperty Name="PRODUCT_CODE" ColumnName="PRODUCT_CODE" />
+                <ScalarProperty Name="PRODUCT_PRICE" ColumnName="PRODUCT_PRICE" />
+                <ScalarProperty Name="PRODUCT_SPECIAL_PRICE" ColumnName="PRODUCT_SPECIAL_PRICE" />
+                <ScalarProperty Name="PRODUCT_DESCIPTION" ColumnName="PRODUCT_DESCIPTION" />
+                <ScalarProperty Name="PRODUCT_INFOMATION" ColumnName="PRODUCT_INFOMATION" />
+                <ScalarProperty Name="PRODUCT_AVAILABILITY" ColumnName="PRODUCT_AVAILABILITY" />
+                <ScalarProperty Name="PRODUCT_CONDITION" ColumnName="PRODUCT_CONDITION" />
+                <ScalarProperty Name="PRODUCT_SKU" ColumnName="PRODUCT_SKU" />
+                <ScalarProperty Name="PRODUCT_BARCODE" ColumnName="PRODUCT_BARCODE" />
+                <ScalarProperty Name="PRODUCT_QUANTITY" ColumnName="PRODUCT_QUANTITY" />
+                <ScalarProperty Name="PRODUCT_ADD_DATE" ColumnName="PRODUCT_ADD_DATE" />
+                <ScalarProperty Name="BRAND_PRODUCT_ID" ColumnName="BRAND_PRODUCT_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SALE_PROMOTION_EVENT">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.SALE_PROMOTION_EVENT">
+              <MappingFragment StoreEntitySet="SALE_PROMOTION_EVENT">
+                <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+                <ScalarProperty Name="EVENT_TITLE" ColumnName="EVENT_TITLE" />
+                <ScalarProperty Name="EVENT_TITLE_UNSIGNED" ColumnName="EVENT_TITLE_UNSIGNED" />
+                <ScalarProperty Name="EVENT_CODE" ColumnName="EVENT_CODE" />
+                <ScalarProperty Name="EVENT_BEGIN_TIME" ColumnName="EVENT_BEGIN_TIME" />
+                <ScalarProperty Name="EVENT_END_TIME" ColumnName="EVENT_END_TIME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIZE_TYPE">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.SIZE_TYPE">
+              <MappingFragment StoreEntitySet="SIZE_TYPE">
+                <ScalarProperty Name="SIZE_TYPE_ID" ColumnName="SIZE_TYPE_ID" />
+                <ScalarProperty Name="SIZE_TYPE_TITLE" ColumnName="SIZE_TYPE_TITLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ECOMMERCEModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ORDER_ITEM" TypeName="ECOMMERCEModel.ORDER_ITEM" StoreEntitySet="ORDER_ITEM">
+            <EndProperty Name="ORDER_TBL">
+              <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+            </EndProperty>
+            <EndProperty Name="PRODUCT_DETAIL">
+              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PRODUCT_CATEGORIE" TypeName="ECOMMERCEModel.PRODUCT_CATEGORIE" StoreEntitySet="PRODUCT_CATEGORIE">
+            <EndProperty Name="CATEGORIE">
+              <ScalarProperty Name="CATEGORIE_ID" ColumnName="CATEGORIE_ID" />
+            </EndProperty>
+            <EndProperty Name="PRODUCT_DETAIL">
+              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PRODUCT_PAY_METHOD" TypeName="ECOMMERCEModel.PRODUCT_PAY_METHOD" StoreEntitySet="PRODUCT_PAY_METHOD">
+            <EndProperty Name="PAY_METHOD">
+              <ScalarProperty Name="PAY_METHOD_ID" ColumnName="PAY_METHOD_ID" />
+            </EndProperty>
+            <EndProperty Name="PRODUCT_DETAIL">
+              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PRODUCT_PROMOTION_EVENT" TypeName="ECOMMERCEModel.PRODUCT_PROMOTION_EVENT" StoreEntitySet="PRODUCT_PROMOTION_EVENT">
+            <EndProperty Name="PRODUCT_DETAIL">
+              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+            </EndProperty>
+            <EndProperty Name="SALE_PROMOTION_EVENT">
+              <ScalarProperty Name="EVENT_ID" ColumnName="EVENT_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="PRODUCT_SIZE" TypeName="ECOMMERCEModel.PRODUCT_SIZE" StoreEntitySet="PRODUCT_SIZE">
+            <EndProperty Name="PRODUCT_DETAIL">
+              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+            </EndProperty>
+            <EndProperty Name="SIZE_TYPE">
+              <ScalarProperty Name="SIZE_TYPE_ID" ColumnName="SIZE_TYPE_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WISHLIST" TypeName="ECOMMERCEModel.WISHLIST" StoreEntitySet="WISHLIST">
+            <EndProperty Name="CUSTOMER">
+              <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+            </EndProperty>
+            <EndProperty Name="PRODUCT_DETAIL">
+              <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

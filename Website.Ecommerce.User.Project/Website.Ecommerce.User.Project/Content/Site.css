@@ -1,0 +1,23 @@
+﻿.vertical-menu-list * {
+    text-transform: capitalize;
+}
+
+.navbar-nav a{
+    text-transform: capitalize;
+}
+
+.breadcrumb *{
+    text-transform: capitalize;
+}
+
+.tree-menu *, .page-heading-title, .subcategories *{
+    text-transform: capitalize;
+}
+
+.check-box-list *{
+    text-transform: capitalize;
+}
+
+.tree-menu a{
+    font-size:12px;
+}
